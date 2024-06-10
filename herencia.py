@@ -1,74 +1,41 @@
-class Real:
+class Figura:
+  """Clase base que representa una figura geométrica."""
 
-    def __init__(self, nombre, ataque, defensa, salud):
-        self.nombre = nombre
-        self.ataque = ataque
-        self.defensa = defensa
-        self.salud = salud
+  def __init__(self, base, altura):
+    """Inicializa la figura con base y altura."""
+    self.base = base
+    self.altura = altura
 
-    def atributos(self):
-        print(self.nombre, ":", sep="")
-        print("Salud.........", self.salud)
-        print("Ataque........", self.ataque)
-        print("Defensa.......", self.defensa)
+  def calcular_area(self):
+    """Calcula el área de la figura."""
+    raise NotImplementedError("La clase Figura no implementa el método calcular_area()")
 
-    def subir_nivel(self, ataque, salud, defensa):
-        self.ataque = self.ataque + ataque
-        self.salud = self.salud + salud
-        self.defensa = self.defensa + defensa
+class Rectangulo(Figura):
+  """Clase que representa un rectángulo."""
 
-    def esta_vivo(self):
-        return self.salud > 0
+  def __init__(self, base, altura):
+    """Inicializa el rectángulo con base y altura."""
+    super().__init__(base, altura)
 
-    def morir(self):
-        self.salud = 0
-        print(self.nombre, "ha muerto")
+  def calcular_area(self):
+    """Calcula el área del rectángulo."""
+    return self.base * self.altura
 
-    def daño(self, enemigo):
-        return self.ataque - enemigo.defensa
+class Triangulo(Figura):
+  """Clase que representa un triángulo."""
 
-    def atacar(self, enemigo):
-        daño = self.daño(enemigo)
-        enemigo.salud = enemigo.salud - daño
-        print(self.nombre, "ha realizado", daño, "puntos de daño a", enemigo.nombre)
-        if enemigo.esta_vivo():
-            print("Vida de", enemigo.nombre, "es", enemigo.salud)
-        else:
-            enemigo.morir()
+  def __init__(self, base, altura):
+    """Inicializa el triángulo con base y altura."""
+    super().__init__(base, altura)
 
+  def calcular_area(self):
+    """Calcula el área del triángulo."""
+    return (self.base * self.altura) / 2
 
-class Caballero(Real):
+# Crea instancias de las clases Rectangulo y Triangulo
+rectangulo = Rectangulo(5, 3)
+triangulo = Triangulo(4, 6)
 
-    def __init__(self, nombre, ataque, defensa, salud, espada):
-        super().__init__(nombre, ataque, defensa, salud)
-        self.espada = espada
-
-    def atributos(self):
-        super().atributos()
-        print("Espada........", self.espada)
-
-    def daño(self, enemigo):
-        return self.ataque * self.espada - enemigo.defensa
-
-
-class Escudo(Real):
-
-    def __init__(self, nombre, ataque, defensa, salud, escudo):
-        super().__init__(nombre, ataque, defensa, salud)
-        self.escudo = escudo
-
-    def atributos(self):
-        super().atributos()
-        print("Escudo........", self.escudo)
-
-    def daño(self, enemigo):
-        return self.defensa * self.escudo - enemigo.defensa
-
-
-personaje_1 = Real("Guerrero", 20, 10, 5)
-personaje_2 = Caballero("Caballero", 2, 1, 100, 1.2)
-personaje_3 = Escudo("Escudero", 5, 20, 10, 1.5)
-
-personaje_1.atributos()
-personaje_2.atributos()
-personaje_3.atributos()
+# Calcula y muestra el área de cada figura
+print(f"Área del rectángulo: {rectangulo.calcular_area()}")
+print(f"Área del triángulo: {triangulo.calcular_area()}")
