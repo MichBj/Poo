@@ -39,7 +39,7 @@ cuenta.titular = input("Nuevo Titular: ")  # Modificación válida
 print(f"Titular: {cuenta.titular}")  # Salida: Titular: María Gómez
 print(f"Saldo: ",c)
 cuenta.depositar(float(input("Monto a depositar: ")))
-print(f"Saldo: {cuenta._saldo}")  # Salida: Saldo: 1500.0
+print(f"Saldo: {cuenta._saldo}")  # Salida: Saldo: 1500
 cuenta.retirar(float(input("Monto a retirar: ")))
-print(f"Saldo: {cuenta._saldo}")  # Salida: Saldo: 1300.0
+print(f"Saldo: {cuenta._saldo}")  # Salida: Saldo: 1300
 
