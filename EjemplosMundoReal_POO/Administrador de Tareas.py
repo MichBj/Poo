@@ -1,6 +1,6 @@
 import tkinter as tk
 
-class TaskManagerApp:
+class AdministradorAmong_Us:
     def __init__(self, master):
         self.master = master
         master.title("Gestor de Tareas")
@@ -12,7 +12,7 @@ class TaskManagerApp:
         self.button_add = tk.Button(master, text="Añadir Tarea", command=self.añadir_tarea)
         self.button_add.pack()
 
-        self.button_complete = tk.Button(master, text="Marcar como Completada", command=self.completar_tarea)
+        self.button_complete = tk.Button(master, text="Completar Tarea", command=self.completar_tarea)
         self.button_complete.pack()
 
         self.button_delete = tk.Button(master, text="Eliminar Tarea", command=self.eliminar_tarea)
@@ -47,5 +47,5 @@ class TaskManagerApp:
 
 # Crear la ventana principal y ejecutar la aplicación
 root = tk.Tk()
-app = TaskManagerApp(root)
+app = AdministradorAmong_Us(root)
 root.mainloop()
