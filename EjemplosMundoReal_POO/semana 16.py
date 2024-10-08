@@ -1,11 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox
-
 class GESTOR:
     def __init__(self, root):
         self.root = root
-        self.root.title("Gestor de Tareas Semana 16")
-        self.root.geometry("150x200")
+        self.root.title("Gestor de Tareas S16")
+        self.root.geometry("250x250")
 
         # Crear la entrada de texto
         self.entry = tk.Entry(root, width=30)
